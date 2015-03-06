@@ -2,7 +2,8 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Github Contest</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -15,46 +16,61 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="githubContestApp">
+  <body ng-app="githubContestApp" ng-controller="MainController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/">
+          <img src="images/1425681087_Swords.png" height="24" width="24" alt="">
+          Github Contest
+        </a>
+      </div>
+    </div>
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">githubContest</a>
+    <div class="container">
+      <div class="row">
+        <div class="well col-md-3 col-md-offset-1">
+          <div class="form-group">
+            <label for="inputUsername1" class="control-label">Choose a contestant :</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon glyphicon glyphicon-bishop"></span>
+              <input type="text" class="form-control" id="inputUsername1" ng-model="contestants[0].username">
+            </div>
           </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="images/1425681087_Swords.png" height="64" width="64" alt="">
+          <button class="btn btn-danger" ng-click="battle()">Battle</button>
+        </div>
+        <div class="well col-md-3">
+          <div class="form-group">
+            <label for="inputUsername2" class="control-label">Choose a rival : </label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon glyphicon glyphicon-knight"></span>
+              <input type="text" class="form-control" id="inputUsername2" ng-model="contestants[1].username">
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
+    {{contestants}}
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <div class="row">
+          <div class="col-md-3">
+            <h4>About Us</h4>
+          </div>
+
+          <div class="col-md-3">
+            <h4>Licenses</h4>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -81,8 +97,8 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/main-controller.js"></script>
+        <script src="scripts/services/github-service.js"></script>
         <!-- endbuild -->
 </body>
 </html>
