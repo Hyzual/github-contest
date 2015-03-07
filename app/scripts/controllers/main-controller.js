@@ -3,28 +3,38 @@
 angular.module('githubContestApp')
 .controller('MainController', ['$scope', '$location', 'Score', function($scope, $location, Score) {
 
-  $scope.contestants = [];
-
-  var search = $location.search();
-  if (search.contestant) {
-    $scope.contestants.push({username: search.contestant});
-  }
-  if (search.rival) {
-    $scope.contestants.push({username: search.rival});
-  }
-
-
   $scope.battle = function () {
-    Score.computeAll($scope.contestants).then(function (contestants) {
-      $scope.contestants = contestants;
-      $location.url("/scores?contestant="+contestants[0].username+"&rival="+contestants[1].username);
+    var contestants = [$scope.contestant, $scope.rival];
+    Score.computeAll(contestants).then(function (ratedContestants) {
+      $scope.contestant = ratedContestants[0];
+      $scope.rival = ratedContestants[1];
+      $scope.contestants = ratedContestants;
+      $location.url("/scores?contestant="+$scope.contestant.username+"&rival="+$scope.rival.username);
     });
   };
 
   $scope.max = function (contestants, criteria) {
-    var maxCriteria = _(contestants).max(function (contestant) {
-      return contestant[criteria];
+    var maxObj = _(contestants).max(function (obj) {
+      return obj[criteria];
     });
-    return maxCriteria[criteria];
+    return maxObj[criteria];
   };
+
+  $scope.atMax = function(contestant, criteria) {
+    var atmax = angular.equals(contestant[criteria], $scope.max($scope.contestants, criteria));
+    return (atmax) ? "warning" : "";
+  };
+
+  // At startup
+  $scope.contestant = {};
+  $scope.rival = {};
+
+  var search = $location.search();
+  $scope.contestant.username = (search.contestant) ? search.contestant : "";
+  $scope.rival.username = (search.rival) ? search.rival : "";
+  $scope.contestants = [$scope.contestant, $scope.rival];
+  if(search.contestant && search.rival) {
+    $scope.battle();
+  }
+
 }]);

@@ -35,10 +35,10 @@
       <div class="row">
         <div class="well well-lg col-md-4">
           <div class="form-group">
-            <label for="inputUsername1" class="control-label">Choose a contestant :</label>
+            <label for="contestantUsername" class="control-label">Choose a contestant :</label>
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-bishop"></span>
-              <input type="text" class="form-control" id="inputUsername1" ng-model="contestants[0].username">
+              <input type="text" class="form-control" id="contestantUsername" ng-model="contestant.username">
             </div>
           </div>
         </div>
@@ -48,17 +48,17 @@
         </div>
         <div class="well well-lg col-md-4">
           <div class="form-group">
-            <label for="inputUsername2" class="control-label">Choose a rival : </label>
+            <label for="rivalUsername" class="control-label">Choose a rival : </label>
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-knight"></span>
-              <input type="text" class="form-control" id="inputUsername2" ng-model="contestants[1].username">
+              <input type="text" class="form-control" id="rivalUsername" ng-model="rival.username">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    {{contestants}}
+    {{contestant}}<br/>{{rival}}
 
     <div ng-view></div>
 
