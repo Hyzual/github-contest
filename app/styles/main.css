@@ -2,6 +2,25 @@
   padding-top: 40px;
 }
 
+.total-score {
+  font-weight: bold;
+}
+
+.winner {
+  font-size: 24px;
+  font-weight: bolder;
+}
+.winner-name {
+  font-size: 36px;
+  color: goldenrod;
+}
+.winner-badge {
+  font-size: 46px;
+  color: goldenrod;
+  background-color: gold;
+  border-radius: 30px;
+  padding: 10px;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

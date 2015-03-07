@@ -38,7 +38,7 @@
             <label for="contestantUsername" class="control-label">Choose a contestant :</label>
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-bishop"></span>
-              <input type="text" class="form-control" id="contestantUsername" ng-model="contestant.username">
+              <input type="text" class="form-control" id="contestantUsername" ng-model="usernames[0].username">
             </div>
           </div>
         </div>
@@ -51,14 +51,12 @@
             <label for="rivalUsername" class="control-label">Choose a rival : </label>
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-knight"></span>
-              <input type="text" class="form-control" id="rivalUsername" ng-model="rival.username">
+              <input type="text" class="form-control" id="rivalUsername" ng-model="usernames[1].username">
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    {{contestant}}<br/>{{rival}}
 
     <div ng-view></div>
 

@@ -4,7 +4,7 @@ angular.module('githubContestApp')
 .controller('MainController', ['$scope', '$location', 'Score', function($scope, $location, Score) {
 
   $scope.battle = function () {
-    var contestants = [$scope.contestant, $scope.rival];
+    var contestants = $scope.usernames;
     Score.computeAll(contestants).then(function (ratedContestants) {
       $scope.contestant = ratedContestants[0];
       $scope.rival = ratedContestants[1];
@@ -14,8 +14,8 @@ angular.module('githubContestApp')
   };
 
   $scope.max = function (contestants, criteria) {
-    var maxObj = _(contestants).max(function (obj) {
-      return obj[criteria];
+    var maxObj = _(contestants).max(function (contestant) {
+      return contestant[criteria];
     });
     return maxObj[criteria];
   };
@@ -25,13 +25,21 @@ angular.module('githubContestApp')
     return (atmax) ? "warning" : "";
   };
 
+  $scope.winner = function(contestants) {
+    var winner = _(contestants).max(function (contestant) {
+      return contestant.score;
+    });
+    return winner;
+  };
+
   // At startup
   $scope.contestant = {};
   $scope.rival = {};
+  $scope.usernames = [{}, {}];
 
   var search = $location.search();
-  $scope.contestant.username = (search.contestant) ? search.contestant : "";
-  $scope.rival.username = (search.rival) ? search.rival : "";
+  $scope.usernames[0].username = (search.contestant) ? search.contestant : "";
+  $scope.usernames[1].username = (search.rival) ? search.rival : "";
   $scope.contestants = [$scope.contestant, $scope.rival];
   if(search.contestant && search.rival) {
     $scope.battle();

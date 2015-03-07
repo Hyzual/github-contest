@@ -19,10 +19,10 @@ angular.module('githubContestApp')
       for (var i = 0; i < contestants.length; i++) {
         var contestant = {
           username: contestants[i].username,
-          publicRepos: 33,
-          publicGists: 56,
-          followers: 69,
-          following: 29
+          publicRepos: Math.round(Math.random() * 100),
+          publicGists: Math.round(Math.random() * 100),
+          followers: Math.round(Math.random() * 100),
+          following: Math.round(Math.random() * 100)
         };
 
         contestant.score = ScoreService.computeFor(contestant);

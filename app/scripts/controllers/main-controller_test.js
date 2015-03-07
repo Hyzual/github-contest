@@ -31,4 +31,23 @@ describe("main-controller", function() {
 
     expect(result).toEqual(5);
   });
+
+  it("Given an array of two contestants and given that the first contestant's score is 10 and the second's score is 3, when I get the winner, then the first contestant is returned", function() {
+    var contestants = [
+      {
+        username: "Seaquist",
+        score: 10
+      }, {
+        username: "Cinalli",
+        score: 3
+      }
+    ];
+
+    var winner = scope.winner(contestants);
+
+    expect(winner).toEqual({
+      username: "Seaquist",
+      score: 10
+    });
+  });
 });

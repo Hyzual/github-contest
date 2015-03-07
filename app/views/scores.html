@@ -21,7 +21,17 @@
   </div>
   <div class="row">
     <div class="col-md-4"><progressbar class="progress-striped" value="contestant.score" max="max(contestants, 'score')" type="{{atMax(contestant, 'score')}}">{{contestant.score}}</progressbar></div>
-    <div class="col-md-4 text-center">Total Score</div>
+    <div class="col-md-4 text-center total-score">Total Score</div>
     <div class="col-md-4"><progressbar class="progress-striped" value="rival.score" max="max(contestants, 'score')" type="{{atMax(rival, 'score')}}">{{rival.score}}</progressbar></div>
+  </div>
+  <div class="row">
+    <div class="winner well well-lg col-md-6 col-md-offset-3 text-center">
+      <i class="winner-badge glyphicon glyphicon-king"></i><br>
+      <span class="winner-name">{{winner(contestants).username}}</span> wins the contest !
+      <p>
+        <a href="javascript: none()">Share on Twitter</a>
+        <a href="javascript: none()">Share on Facebook</a>
+      </p>
+    </div>
   </div>
 </div>
