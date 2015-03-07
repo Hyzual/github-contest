@@ -1,24 +1,27 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name githubContestApp.github
- * @description
- * # github
- * Service in the githubContestApp.
- */
 angular.module("githubContestApp")
-.service("Github", ["$http", function($http){
+.service("Github", ["$http", "$q", function($http, $q){
 
-  this.getUserInfo = function () {
-    return $http.get("https://api.github.com/users/hyzual", {
-      params: {
+  this.getUserInfo = function (username) {
+    if (username !== undefined && username !== "") {
+      return $http.get("https://api.github.com/users/" + username, {
+        cache: true
+      }).then(function (result) {
+          if(result.data !== undefined) {
+            return {
+              "username": username,
+              "publicRepos": result.data.public_repos,
+              "publicGists": result.data.public_gists,
+              "followers": result.data.followers,
+              "following": result.data.following
+            };
+          }
+        }, function (error) {
+          console.log("error", error);
+        });
+    } else {
 
-      }
-    }).then(function (userInfo) {
-      console.log("userInfo", userInfo);
-    }, function (error) {
-      console.log("error", error);
-    });
+    }
   };
 }]);

@@ -1,18 +1,21 @@
 "use strict";
 
 describe("score-service", function() {
-  var Score, contestant;
+  var Score, contestant, Github, deferred, scope;
   beforeEach(function() {
     module('githubContestApp', function ($provide) {
       // Mock the Github service
-      $provide.decorator('Github', function ($delegate) {
-
+      $provide.decorator('Github', function ($delegate, $q) {
+        deferred = $q.defer();
+        $delegate.getUserInfo = jasmine.createSpy("getUserInfo").and.returnValue(deferred.promise);
         return $delegate;
       });
     });
 
-    inject(function (_Score_) {
+    inject(function (_Score_, _Github_, $rootScope) {
       Score = _Score_;
+      Github = _Github_;
+      scope = $rootScope.$new();
     });
     contestant = {};
   });
@@ -41,12 +44,21 @@ describe("score-service", function() {
     expect(result).toEqual(1);
   });
 
-  it("Given an array of contestant usernames, when I compute all the scores, then each contestant's score will be computed", function() {
-    spyOn(Score, 'computeFor');
+  it("Given an array of contestant usernames, when I compute all the scores, then each contestant's score will be computed and the contestants will be returned", function() {
+    spyOn(Score, 'computeFor').and.returnValue(2);
     var contestants = ["Bodo", "Loehrs"];
 
-    Score.computeAll(contestants);
+    var promise = Score.computeAll(contestants);
+    deferred.resolve({});
+    scope.$apply();
 
     expect(Score.computeFor.calls.count()).toEqual(2);
+    expect(promise).toBeResolvedWith({
+      username: "Bodo",
+      score: 2
+    }, {
+      username: "Loehrs",
+      score: 2
+    });
   });
 });

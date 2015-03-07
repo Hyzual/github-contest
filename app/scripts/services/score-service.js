@@ -12,24 +12,18 @@ angular.module('githubContestApp')
 
   var ScoreService = {
     computeAll: function(contestants) {
-      var deferred = $q.defer();
       var ratedContestants = [];
 
       // Get contestant info from Github
       for (var i = 0; i < contestants.length; i++) {
-        var contestant = {
-          username: contestants[i].username,
-          publicRepos: Math.round(Math.random() * 100),
-          publicGists: Math.round(Math.random() * 100),
-          followers: Math.round(Math.random() * 100),
-          following: Math.round(Math.random() * 100)
-        };
-
-        contestant.score = ScoreService.computeFor(contestant);
-        ratedContestants.push(contestant);
+        var contestant = contestants[i];
+        var promise = Github.getUserInfo(contestant.username).then(function (userInfo) {
+          userInfo.score = ScoreService.computeFor(userInfo);
+          return userInfo;
+        });
+        ratedContestants.push(promise);
       }
-      deferred.resolve(ratedContestants);
-      return deferred.promise;
+      return $q.all(ratedContestants);
     },
 
     computeFor: function(contestant) {
