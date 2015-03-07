@@ -24,6 +24,8 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/underscore/underscore.js',
+      'bower_components/angular-underscore/angular-underscore.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/**/*.js',
