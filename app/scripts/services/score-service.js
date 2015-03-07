@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('githubContestApp')
-.factory('Score', ['Github', function(Github){
+.factory('Score', ['$q', 'Github', function($q, Github){
 
   var scores = {
     publicRepos: 10,
@@ -11,12 +11,14 @@ angular.module('githubContestApp')
   };
 
   var ScoreService = {
-    computeAll: function(usernames) {
-      var contestants = [];
+    computeAll: function(contestants) {
+      var deferred = $q.defer();
+      var ratedContestants = [];
 
       // Get contestant info from Github
-      for (var i = 0; i < usernames.length; i++) {
+      for (var i = 0; i < contestants.length; i++) {
         var contestant = {
+          username: contestants[i].username,
           publicRepos: 33,
           publicGists: 56,
           followers: 69,
@@ -24,8 +26,10 @@ angular.module('githubContestApp')
         };
 
         contestant.score = ScoreService.computeFor(contestant);
-        contestants.push(contestant);
+        ratedContestants.push(contestant);
       }
+      deferred.resolve(ratedContestants);
+      return deferred.promise;
     },
 
     computeFor: function(contestant) {

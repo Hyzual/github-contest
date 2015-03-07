@@ -15,7 +15,9 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-
+      .when("/scores", {
+        templateUrl: "views/scores.html"
+      })
       .otherwise({
         redirectTo: '/'
       });

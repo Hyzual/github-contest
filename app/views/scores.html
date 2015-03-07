@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[0].publicRepos" max="max(contestants, 'publicRepos')">{{contestants[0].publicRepos}}</progressbar></div>
+    <div class="col-md-4 text-center">Public repos (10 points)</div>
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[1].publicRepos" max="max(contestants, 'publicRepos')">{{contestants[1].publicRepos}}</progressbar></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[0].publicGists" max="max(contestants, 'publicGists')">{{contestants[0].publicGists}}</progressbar></div>
+    <div class="col-md-4 text-center">Public Gists (3 points)</div>
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[1].publicGists" max="max(contestants, 'publicGists')">{{contestants[1].publicGists}}</progressbar></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[0].followers" max="max(contestants, 'followers')">{{contestants[0].followers}}</progressbar></div>
+    <div class="col-md-4 text-center">Number of Followers (2 points)</div>
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[1].followers" max="max(contestants, 'followers')">{{contestants[1].followers}}</progressbar></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[0].following" max="max(contestants, 'following')">{{contestants[0].following}}</progressbar></div>
+    <div class="col-md-4 text-center">Number of people followed (1 points)</div>
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[1].following" max="max(contestants, 'following')">{{contestants[1].following}}</progressbar></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[0].score" max="max(contestants, 'score')">{{contestants[0].score}}</progressbar></div>
+    <div class="col-md-4 text-center">Total Score</div>
+    <div class="col-md-4"><progressbar class="progress-striped" value="contestants[1].score" max="max(contestants, 'score')">{{contestants[1].score}}</progressbar></div>
+  </div>
+</div>
