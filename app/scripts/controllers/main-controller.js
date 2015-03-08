@@ -1,7 +1,6 @@
-'use strict';
-
-angular.module('githubContestApp')
+angular.module('githubcontest.controller', ['githubcontest.score.service', 'angular-underscore/utils'])
 .controller('MainController', ['$scope', '$location', '$window', 'Score', function($scope, $location, $window, Score) {
+  'use strict';
 
   $scope.battle = function () {
     var contestants = $scope.usernames;

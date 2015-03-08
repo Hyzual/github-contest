@@ -198,7 +198,6 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/*.js'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images', '<%= yeoman.dist %>/styles']
       }
@@ -284,6 +283,12 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           src: ['styles/{,*/}*.css'],
           dest: '.tmp'
+        },
+        {
+          expand: true,
+          cwd: 'bower_components/bootstrap/fonts',
+          dest: '<%= yeoman.dist %>/fonts',
+          src: '*.*'
         }]
       }
     }
@@ -302,10 +307,9 @@ module.exports = function (grunt) {
       ]);
   });
 
-  grunt.registerTask('test', 'Run unit tests and jshint', function() {
+  grunt.registerTask('test', 'Run unit tests', function() {
     return grunt.task.run([
-      'karma:unit',
-      'jshint'
+      'karma:unit'
     ]);
   });
 

@@ -3,7 +3,7 @@
 describe("Github service", function() {
   var Github, mockBackend;
   beforeEach(function() {
-    module("githubContestApp");
+    module("githubcontest.github.service");
 
     inject(function (_Github_, $httpBackend) {
       Github = _Github_;

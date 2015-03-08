@@ -3,7 +3,7 @@
 describe("score-service", function() {
   var Score, contestant, Github, deferred, scope;
   beforeEach(function() {
-    module('githubContestApp', function ($provide) {
+    module('githubcontest.score.service', function ($provide) {
       // Mock the Github service
       $provide.decorator('Github', function ($delegate, $q) {
         deferred = $q.defer();

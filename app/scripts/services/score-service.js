@@ -1,7 +1,6 @@
-"use strict";
-
-angular.module('githubContestApp')
+angular.module('githubcontest.score.service', ['githubcontest.github.service'])
 .factory('Score', ['$q', 'Github', function($q, Github){
+  "use strict";
 
   var scores = {
     publicRepos: 10,

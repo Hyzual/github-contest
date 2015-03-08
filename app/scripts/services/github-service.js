@@ -1,7 +1,6 @@
-'use strict';
-
-angular.module("githubContestApp")
+angular.module("githubcontest.github.service", [])
 .service("Github", ["$http", "$q", function($http, $q){
+  'use strict';
 
   this.getUserInfo = function (username) {
     if (username !== undefined && username !== "") {

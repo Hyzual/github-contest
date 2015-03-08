@@ -4,7 +4,7 @@ describe("main-controller", function() {
 
   var mainController, scope, Score;
   beforeEach(function() {
-    module('githubContestApp');
+    module('githubcontest.controller');
 
     inject(function ($controller, $rootScope) {
       scope = $rootScope.$new();
