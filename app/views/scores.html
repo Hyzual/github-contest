@@ -1,9 +1,21 @@
 <div class="container">
   <div class="jumbotron">
-    <div class="row visible-xs-block">
-      <div class="contestant-username col-xs-4 text-center">{{contestant.username}}</div>
-      <div class="col-xs-4 text-center">vs</div>
-      <div class="contestant-username col-xs-4 text-center">{{rival.username}}</div>
+    <div class="row contestant-username">
+      <div class="col-xs-4 text-center">
+        <figure class="hidden-xs">
+          <img ng-src="{{contestant.avatarUrl}}" height="100px" width="100px" alt="">
+          <figcaption>{{contestant.username}}</figcaption>
+        </figure>
+        <span class="visible-xs-inline">{{contestant.username}}</span>
+      </div>
+      <div class="versus col-xs-4 text-center">vs</div>
+      <div class="col-xs-4 text-center">
+        <figure class="hidden-xs">
+          <img ng-src="{{rival.avatarUrl}}" height="100px" width="100px" alt="">
+          <figcaption>{{rival.username}}</figcaption>
+        </figure>
+        <span class="visible-xs-inline">{{rival.username}}</span>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-4 col-xs-2">

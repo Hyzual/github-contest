@@ -14,6 +14,12 @@ angular.module('githubContestApp')
     });
   };
 
+  $scope.validUsernames = function () {
+    return _($scope.usernames).every(function (obj) {
+      return obj.username !== undefined && obj.username !== "";
+    });
+  };
+
   $scope.max = function (contestants, criteria) {
     var maxObj = _(contestants).max(function (contestant) {
       return contestant[criteria];

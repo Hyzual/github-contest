@@ -8,6 +8,16 @@
   }
 }
 
+.engage {
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  .engage {
+    font-size: 14px;
+  }
+}
+
 .contestant-username {
   font-weight: bold;
 }

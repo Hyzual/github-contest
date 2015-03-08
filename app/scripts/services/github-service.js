@@ -11,6 +11,7 @@ angular.module("githubContestApp")
           if(result.data !== undefined) {
             return {
               "username": username,
+              "avatarUrl": result.data.avatar_url,
               "publicRepos": result.data.public_repos,
               "publicGists": result.data.public_gists,
               "followers": result.data.followers,

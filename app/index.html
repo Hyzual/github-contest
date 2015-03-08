@@ -31,6 +31,10 @@
       </div>
     </div>
 
+    <div class="container engage">
+      <p>Choose a contestant and a rival. Let the contest begin !</p>
+    </div>
+
     <div class="container">
       <div class="row">
         <form>
@@ -43,11 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 text-center versus">
-            <img src="images/1425681087_Swords.png" height="64" width="64" alt="">
-            <button class="btn btn-danger" ng-click="battle()">Battle</button>
-          </div>
-          <div class="well well-lg col-md-4">
+          <div class="well well-lg col-md-4 col-md-offset-1">
             <div class="form-group">
               <label for="rivalUsername" class="control-label">Choose a rival : </label>
               <div class="input-group input-group-lg">
@@ -55,6 +55,10 @@
                 <input type="text" class="form-control" id="rivalUsername" ng-model="usernames[1].username">
               </div>
             </div>
+          </div>
+          <div class="well well-lg col-md-2 col-md-offset-1 text-center versus">
+            <img src="images/1425681087_Swords.png" height="64" width="64" alt="">
+            <button class="btn btn-danger" ng-click="battle()" ng-disabled="!validUsernames()">Battle</button>
           </div>
         </form>
       </div>
