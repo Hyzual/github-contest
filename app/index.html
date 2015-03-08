@@ -33,28 +33,30 @@
 
     <div class="container">
       <div class="row">
-        <div class="well well-lg col-md-4">
-          <div class="form-group">
-            <label for="contestantUsername" class="control-label">Choose a contestant :</label>
-            <div class="input-group input-group-lg">
-              <span class="input-group-addon glyphicon glyphicon-bishop"></span>
-              <input type="text" class="form-control" id="contestantUsername" ng-model="usernames[0].username">
+        <form>
+          <div class="well well-lg col-md-4">
+            <div class="form-group">
+              <label for="contestantUsername" class="control-label">Choose a contestant :</label>
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon glyphicon glyphicon-bishop"></span>
+                <input type="text" class="form-control" id="contestantUsername" ng-model="usernames[0].username">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 text-center versus">
-          <img src="images/1425681087_Swords.png" height="64" width="64" alt="">
-          <button class="btn btn-danger" ng-click="battle()">Battle</button>
-        </div>
-        <div class="well well-lg col-md-4">
-          <div class="form-group">
-            <label for="rivalUsername" class="control-label">Choose a rival : </label>
-            <div class="input-group input-group-lg">
-              <span class="input-group-addon glyphicon glyphicon-knight"></span>
-              <input type="text" class="form-control" id="rivalUsername" ng-model="usernames[1].username">
+          <div class="col-md-4 text-center versus">
+            <img src="images/1425681087_Swords.png" height="64" width="64" alt="">
+            <button class="btn btn-danger" ng-click="battle()">Battle</button>
+          </div>
+          <div class="well well-lg col-md-4">
+            <div class="form-group">
+              <label for="rivalUsername" class="control-label">Choose a rival : </label>
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon glyphicon glyphicon-knight"></span>
+                <input type="text" class="form-control" id="rivalUsername" ng-model="usernames[1].username">
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -108,5 +110,17 @@
     <script src="scripts/services/github-service.js"></script>
     <script src="scripts/services/score-service.js"></script>
     <!-- endbuild -->
+
+    <!-- Facebook button -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Twitter button -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </body>
 </html>

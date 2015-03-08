@@ -47,6 +47,10 @@
   padding: 10px;
 }
 
+.fb-share-button{
+  vertical-align: top;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

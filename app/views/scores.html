@@ -65,8 +65,9 @@
         <i class="winner-badge glyphicon glyphicon-king"></i><br>
         <span class="winner-name">{{winner(contestants).username}}</span> wins the contest !
         <p>
-          <a href="javascript: none()">Share on Twitter</a>
-          <a href="javascript: none()">Share on Facebook</a>
+          <a ng-href="mailto:?subject=My%20match%20on%20Github%20Contest&body=Hey%2C%20take%20a%20look%20at%20my%20match%20on%20Github%20Contest%20!%0A{{share.url}}"><i class="glyphicon glyphicon-envelope"></i>Send an email</a><br>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
+          <span class="fb-share-button" data-layout="button"></span>
         </p>
       </div>
     </div>

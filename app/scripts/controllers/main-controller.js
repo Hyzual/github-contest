@@ -10,6 +10,7 @@ angular.module('githubContestApp')
       $scope.rival = ratedContestants[1];
       $scope.contestants = ratedContestants;
       $location.url("/scores?contestant="+$scope.contestant.username+"&rival="+$scope.rival.username);
+      $scope.share.url = encodeURIComponent($location.absUrl());
     });
   };
 
@@ -36,6 +37,9 @@ angular.module('githubContestApp')
   $scope.contestant = {};
   $scope.rival = {};
   $scope.usernames = [{}, {}];
+  $scope.share = {
+    url: encodeURIComponent($location.absUrl())
+  };
 
   var search = $location.search();
   $scope.usernames[0].username = (search.contestant) ? search.contestant : "";
