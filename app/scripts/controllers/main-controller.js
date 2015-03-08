@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('githubContestApp')
-.controller('MainController', ['$scope', '$location', 'Score', function($scope, $location, Score) {
+.controller('MainController', ['$scope', '$location', '$window', 'Score', function($scope, $location, $window, Score) {
 
   $scope.battle = function () {
     var contestants = $scope.usernames;
@@ -11,6 +11,8 @@ angular.module('githubContestApp')
       $scope.contestants = ratedContestants;
       $location.url("/scores?contestant="+$scope.contestant.username+"&rival="+$scope.rival.username);
       $scope.share.url = encodeURIComponent($location.absUrl());
+    }, function (error) {
+      $window.alert(error);
     });
   };
 

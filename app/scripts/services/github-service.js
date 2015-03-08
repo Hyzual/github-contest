@@ -8,21 +8,19 @@ angular.module("githubContestApp")
       return $http.get("https://api.github.com/users/" + username, {
         cache: true
       }).then(function (result) {
-          if(result.data !== undefined) {
-            return {
-              "username": username,
-              "avatarUrl": result.data.avatar_url,
-              "publicRepos": result.data.public_repos,
-              "publicGists": result.data.public_gists,
-              "followers": result.data.followers,
-              "following": result.data.following
-            };
-          }
-        }, function (error) {
-          console.log("error", error);
-        });
+        if(result.data !== undefined) {
+          return {
+            "username": username,
+            "avatarUrl": result.data.avatar_url,
+            "publicRepos": result.data.public_repos,
+            "publicGists": result.data.public_gists,
+            "followers": result.data.followers,
+            "following": result.data.following
+          };
+        }
+      });
     } else {
-
+      $q.reject({reason: "Error: username is empty"});
     }
   };
 }]);

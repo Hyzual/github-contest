@@ -20,6 +20,7 @@ describe("Github service", function() {
     var response = {
       "login": "Shramek",
       "id": 92,
+      "avatar_url": "http://sawarra.com/frigostable/corrector?a=kale&b=abscissa#thrombokinase",
       "public_repos": 51,
       "public_gists": 21,
       "followers": 73,
@@ -32,6 +33,7 @@ describe("Github service", function() {
 
     expect(promise).toBeResolvedWith({
       "username": "Shramek",
+      "avatarUrl": "http://sawarra.com/frigostable/corrector?a=kale&b=abscissa#thrombokinase",
       "publicRepos": 51,
       "publicGists": 21,
       "followers": 73,

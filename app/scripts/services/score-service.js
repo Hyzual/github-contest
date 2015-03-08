@@ -20,6 +20,14 @@ angular.module('githubContestApp')
         var promise = Github.getUserInfo(contestant.username).then(function (userInfo) {
           userInfo.score = ScoreService.computeFor(userInfo);
           return userInfo;
+        }, function (error) {
+          var message = "";
+          if(error.status) {
+            message = error.status + " " + error.statusText;
+          } else if (error.reason) {
+            message = error.reason;
+          }
+          return $q.reject(message);
         });
         ratedContestants.push(promise);
       }
